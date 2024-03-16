@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct Settings: View {
+    
+    // User Properties
+    @AppStorage("userName") private var userName: String = ""
+    
+    // App Lock Properties
+    @AppStorage("isAppLockEnabled") private var isAppLockEnabled: Bool = false
+    @AppStorage("lockWhenAppGoesBackground") private var lockWhenAppGoesBackground: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section("Nazwa użytkownika") {
+                    TextField("Nazwa", text: $userName)
+                }
+                
+                Section("Blokada aplikacji") {
+                    Toggle("Włącz blokade aplikacji", isOn: $isAppLockEnabled)
+                    
+                    if isAppLockEnabled {
+                        Toggle("Zablokuj gdy aplikacja zostanie zminimalizowana", isOn: $lockWhenAppGoesBackground)
+                        
+                    }
+                }
+            }
+            .navigationTitle("Ustawienia")
+        }
     }
 }
 

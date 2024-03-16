@@ -21,6 +21,7 @@
 		5E1CA9182B8CCBA000FBBAEF /* IntroScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1CA9172B8CCBA000FBBAEF /* IntroScreen.swift */; };
 		5E1CA91B2B8CCD4E00FBBAEF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1CA91A2B8CCD4E00FBBAEF /* Constants.swift */; };
 		5E1CA91D2B8CE1C300FBBAEF /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1CA91C2B8CE1C300FBBAEF /* Tab.swift */; };
+		5E3C59AE2BA07CBB00722427 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C59AD2BA07CBB00722427 /* LockView.swift */; };
 		5E6056462B8E2ABC007308E1 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6056452B8E2ABC007308E1 /* View+Extensions.swift */; };
 		5E6056482B8E3329007308E1 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6056472B8E3329007308E1 /* Date+Extensions.swift */; };
 		5E60564B2B8E3541007308E1 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60564A2B8E3541007308E1 /* CardView.swift */; };
@@ -45,6 +46,7 @@
 		5E1CA9172B8CCBA000FBBAEF /* IntroScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreen.swift; sourceTree = "<group>"; };
 		5E1CA91A2B8CCD4E00FBBAEF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5E1CA91C2B8CE1C300FBBAEF /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		5E3C59AD2BA07CBB00722427 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		5E6056452B8E2ABC007308E1 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		5E6056472B8E3329007308E1 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		5E60564A2B8E3541007308E1 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				5E60564C2B8E3EBE007308E1 /* TransactionCardView.swift */,
 				5E60564E2B8E4569007308E1 /* SwipeAction.swift */,
 				5E6056502B8E7A12007308E1 /* DateFilterView.swift */,
+				5E3C59AD2BA07CBB00722427 /* LockView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				5E1075CB2B8E28E0007D8FD6 /* Search.swift in Sources */,
 				5E6056482B8E3329007308E1 /* Date+Extensions.swift in Sources */,
 				5E6056462B8E2ABC007308E1 /* View+Extensions.swift in Sources */,
+				5E3C59AE2BA07CBB00722427 /* LockView.swift in Sources */,
 				5E1CA9082B8CCA9700FBBAEF /* Spend_SenseApp.swift in Sources */,
 				5E1075CD2B8E28E9007D8FD6 /* Graphs.swift in Sources */,
 				5E1075C22B8E2667007D8FD6 /* Category.swift in Sources */,
@@ -379,6 +383,7 @@
 				DEVELOPMENT_TEAM = 5H4L2XMW7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = DESCRIPTION;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -408,6 +413,7 @@
 				DEVELOPMENT_TEAM = 5H4L2XMW7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = DESCRIPTION;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
