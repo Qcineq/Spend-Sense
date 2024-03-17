@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var activeTab: Tab = .recents
     
     var body: some View {
-        LockView(lockType: .both, lockPin: "2704", isEnabled: isAppLockEnabled) {
+        LockView(lockType: .both, lockPin: "0000", isEnabled: isAppLockEnabled) {
             TabView(selection: $activeTab) {
                 Recents()
                     .tag(Tab.recents)
