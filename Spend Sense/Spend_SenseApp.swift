@@ -13,5 +13,6 @@ struct Spend_SenseApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Transaction.self])
     }
 }

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Transaction: Identifiable {
-    let id: UUID = .init()
-    
+@Model
+class Transaction {
     //Properties
     var title: String
     var remarks: String
@@ -28,16 +28,18 @@ struct Transaction: Identifiable {
     }
     
     // Extracting Color Value from tintColor String
+    @Transient
     var color: Color {
         return tints.first(where: { $0.color == tintColor })?.value ?? appTint
     }
+    
+    @Transient
+    var tint: TintColor? {
+        return tints.first(where: { $0.color == tintColor })
+    }
+    
+    @Transient
+    var rawCategory: Category? {
+        return Category.allCases.first(where: { category == $0.rawValue })
+    }
 }
-
-// Sample Transactions for UI Building
-var sampleTransactions: [Transaction] = [
-    .init(title: "iPhone 15 Pro Max", remarks: "Elektronika", amount: 7600, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "MacBook Pro", remarks: "Elektronika", amount: 11900, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "iCloud+", remarks: "Subskrypcja", amount: 49, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "Spotify", remarks: "Subskrypcja", amount: 29, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "Wypłata", remarks: "Pensja", amount: 10000, dateAdded: .now, category: .income, tintColor: tints.randomElement()!),
-]

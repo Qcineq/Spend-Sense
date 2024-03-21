@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct NewExpenseView: View {
+    // Env Properties
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+    var editTransaction: Transaction?
+    
     // View Properties
     @State private var title: String = ""
     @State private var remarks: String = ""
@@ -16,7 +21,7 @@ struct NewExpenseView: View {
     @State private var category: Category = .expense
     
     // Random Tint
-    var tint: TintColor = tints.randomElement()!
+    @State var tint: TintColor = tints.randomElement()!
     
     var body: some View {
         ScrollView(.vertical) {
@@ -77,18 +82,45 @@ struct NewExpenseView: View {
             }
             .padding(15)
         }
-        .navigationTitle("Dodaj transakcję")
+        .navigationTitle("\(editTransaction == nil ? "Dodaj" : "Edytuj") transakcję")
         .background(.gray.opacity(0.15))
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Zapisz", action: save)
             }
         })
+        .onAppear(perform: {
+            if let editTransaction {
+                // Load All Existing Data from the Transaction
+                title = editTransaction.title
+                remarks = editTransaction.remarks
+                dateAdded = editTransaction.dateAdded
+                if let category = editTransaction.rawCategory {
+                    self.category = category
+                }
+                amount = editTransaction.amount
+                if let tint = editTransaction.tint {
+                    self.tint = tint
+                }
+            }
+        })
     }
     
     // Saving Data
     func save() {
-        
+        // Saving Item to SwiftData
+        if editTransaction != nil {
+            editTransaction?.title = title
+            editTransaction?.remarks = remarks
+            editTransaction?.amount = amount
+            editTransaction?.category = category.rawValue
+            editTransaction?.dateAdded = dateAdded
+        } else {
+            let transaction = Transaction(title: title, remarks: remarks, amount: amount, dateAdded: dateAdded, category: category, tintColor: tint)
+            context.insert(transaction)
+        }
+        // Dismissing View
+        dismiss()
     }
     
     @ViewBuilder
