@@ -21,9 +21,7 @@ struct Search: View {
                 LazyVStack(spacing: 12) {
                     FilterTransactionsView(category: selectedCategory, searchText: filterText) { transactions in
                         ForEach(transactions) { transaction in
-                            NavigationLink {
-                                TransactionView(editTransaction: transaction)
-                            } label: {
+                            NavigationLink(value: transaction) {
                                 TransactionCardView(transaction: transaction, showsCategory: true)
                             }
                             .buttonStyle(.plain)
@@ -32,6 +30,9 @@ struct Search: View {
                 }
                 .padding(15)
             }
+            .navigationDestination(for: Transaction.self, destination: { transaction in
+                TransactionView(editTransaction: transaction)
+            })
             .overlay(content: {
                 ContentUnavailableView("Wyszukaj transakcję", systemImage: "magnifyingglass")
                     .opacity(filterText.isEmpty ? 1 : 0)
