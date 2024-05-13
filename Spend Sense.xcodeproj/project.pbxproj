@@ -30,6 +30,7 @@
 		5E6056512B8E7A12007308E1 /* DateFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6056502B8E7A12007308E1 /* DateFilterView.swift */; };
 		5E768E0B2BAC8120001C5BEC /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E768E0A2BAC8120001C5BEC /* TransactionView.swift */; };
 		5E768E0D2BAEE591001C5BEC /* FilterTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E768E0C2BAEE591001C5BEC /* FilterTransactionsView.swift */; };
+		5EA113B52BF1F4B40036F6D7 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA113B42BF1F4B40036F6D7 /* ChartModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		5E6056502B8E7A12007308E1 /* DateFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFilterView.swift; sourceTree = "<group>"; };
 		5E768E0A2BAC8120001C5BEC /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		5E768E0C2BAEE591001C5BEC /* FilterTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTransactionsView.swift; sourceTree = "<group>"; };
+		5EA113B42BF1F4B40036F6D7 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				5E1075C12B8E2667007D8FD6 /* Category.swift */,
 				5E1075C32B8E26B3007D8FD6 /* Transaction.swift */,
 				5E1075C52B8E2727007D8FD6 /* TintColor.swift */,
+				5EA113B42BF1F4B40036F6D7 /* ChartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				5E60564B2B8E3541007308E1 /* CardView.swift in Sources */,
 				5E60564F2B8E4569007308E1 /* SwipeAction.swift in Sources */,
 				5E1CA9182B8CCBA000FBBAEF /* IntroScreen.swift in Sources */,
+				5EA113B52BF1F4B40036F6D7 /* ChartModel.swift in Sources */,
 				5E768E0B2BAC8120001C5BEC /* TransactionView.swift in Sources */,
 				5E1CA91D2B8CE1C300FBBAEF /* Tab.swift in Sources */,
 				5E1075CF2B8E28F4007D8FD6 /* Settings.swift in Sources */,
