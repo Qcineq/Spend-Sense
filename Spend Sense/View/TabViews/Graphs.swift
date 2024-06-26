@@ -19,9 +19,26 @@ struct Graphs: View {
             ScrollView(.vertical) {
                 LazyVStack(spacing: 10) {
                     ChartView()
-                        .padding(10)
                         .frame(height: 200)
+                        .padding(10)
+                        .padding(.top, 10)
                         .background(.background, in: .rect(cornerRadius: 10))
+                    
+                    ForEach(chartGroup) { group in
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(format(date: group.date, format: "dd MMM yyyy"))
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                                .hSpacing(.leading)
+                            
+                            NavigationLink {
+                                listOfExpenses(month: group.date)
+                            } label: {
+                                CardView(income: group.totalIncome, expense: group.totalExpense)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
                 }
                 .padding(15)
             }
@@ -53,6 +70,19 @@ struct Graphs: View {
         }
         // Making Chart Scrollable
         .chartScrollableAxes(.horizontal)
+        .chartXVisibleDomain(length: 4)
+        .chartLegend(position: .bottom, alignment: .trailing)
+        .chartYAxis {
+            AxisMarks(position: .leading) { value in
+                let doubleValue = value.as(Double.self) ?? 0
+                
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel {
+                    Text(axisLabel(doubleValue))
+                }
+            }
+        }
         
         // Foreground Colors
         .chartForegroundStyleScale(range: [Color.green.gradient, Color.red.gradient])
@@ -99,6 +129,62 @@ struct Graphs: View {
                 self.chartGroup = chartGroups
             }
         }
+    }
+    
+    func axisLabel(_ value: Double) -> String {
+        let intValue = Int(value)
+        let kValue = intValue / 1000
+        
+        return intValue > 1000 ? "\(intValue)" : "\(kValue)K"
+    }
+}
+
+// List Of Transactions for the selected month
+struct listOfExpenses: View {
+    let month: Date
+    var body: some View {
+        ScrollView(.vertical) {
+            LazyVStack(spacing: 15) {
+                Section {
+                    FilterTransactionsView(startDate: month.startOfMonth, endDate: month.endOfMonth, category: .income) { transactions in
+                        ForEach(transactions) { transaction in
+                            NavigationLink {
+                                TransactionView(editTransaction: transaction)
+                            } label: {
+                                TransactionCardView(transaction: transaction)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                } header: {
+                    Text("Wpływy")
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .hSpacing(.leading)
+                }
+                
+                Section {
+                    FilterTransactionsView(startDate: month.startOfMonth, endDate: month.endOfMonth, category: .expense) { transactions in
+                        ForEach(transactions) { transaction in
+                            NavigationLink {
+                                TransactionView(editTransaction: transaction)
+                            } label: {
+                                TransactionCardView(transaction: transaction)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                } header: {
+                    Text("Wydatki")
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .hSpacing(.leading)
+                }
+            }
+            .padding(15)
+        }
+        .background(.gray.opacity(0.15))
+        .navigationTitle(format(date: month, format: "MMM yyyy"))
     }
 }
 
